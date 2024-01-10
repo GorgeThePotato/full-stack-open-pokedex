@@ -31,6 +31,7 @@ module.exports = {
       "error",
       "single"
     ],
+    "no-undefined":"off",
     "semi": [
       "error",
       "never"
