@@ -1,6 +1,7 @@
 module.exports = {
   "env": {
     "node": true,
+    "browser":true,
     "es6": true,
     "jest/globals": true
   },
@@ -31,7 +32,6 @@ module.exports = {
       "error",
       "single"
     ],
-    "no-undefined":"off",
     "semi": [
       "error",
       "never"
