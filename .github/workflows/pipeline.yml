@@ -40,6 +40,15 @@ jobs:
       - name: Trigger deployment
         if: ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message, '\n'), '#skip') && !contains(join(github.event.commits.*.message, '\n'), '[ci skip]') && !contains(join(github.event.commits.*.message, '\n'), '[no ci]') && !contains(join(github.event.commits.*.message, '\n'), '[skip actions]') && !contains(join(github.event.commits.*.message, '\n'), '[actions skip]')}}
         run: curl https://api.render.com/deploy/srv-${{ secrets.RENDER_SERVICE_ID }}?key=${{ secrets.RENDER_API_KEY }}
+
+      - name: Discord Webhook Notify
+        uses: rjstone/discord-webhook-notify@v1.0.4
+        if: success()
+        with:
+            severity: info
+            details: Build Succeeded!
+            webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+    
         
   tag_release:
     needs: [simple_deployment_pipeline]
