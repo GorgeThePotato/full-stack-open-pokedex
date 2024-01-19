@@ -49,5 +49,6 @@ jobs:
         if: ${{ github.event_name == 'push' }}
         uses: anothrNick/github-tag-action@1.64.0
         env:
+          GIT_DISCOVERY_ACROSS_FILESYSTEM: 1
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DEFAULT_BUMP: patch
